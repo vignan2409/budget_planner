@@ -24,7 +24,7 @@ const BudgetItem = ({ budget, showDelete = false }) => {
     >
       <div className="progress-text">
         <h3>{name}</h3>
-        <p>{formatCurrency(amount)} Budgeted</p>
+        <p>{formatCurrency(amount)}</p>
       </div>
       <progress max={amount} value={spent}>
         {formatPercentage(spent / amount)}
@@ -32,6 +32,10 @@ const BudgetItem = ({ budget, showDelete = false }) => {
       <div className="progress-text">
         <small>{formatCurrency(spent)} spent</small>
         <small>{formatCurrency(amount - spent)} remaining</small>
+      </div>
+      <div className="progress-text">
+        <small>{(100*spent/amount).toFixed(2)}%</small>
+        <small>{(100*(amount - spent)/amount).toFixed(2)}%</small>
       </div>
       {showDelete ? (
         <div className="flex-sm">

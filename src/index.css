@@ -452,7 +452,7 @@ select {
   -webkit-box-flex: 1;
   -ms-flex: 1 1 48%;
   flex: 1 1 48%;
-  max-width: 800px;
+  max-width: 1200px;
   position: relative;
   display: -ms-grid;
   display: grid;
@@ -480,12 +480,27 @@ select {
 .expense-inputs {
   display: -webkit-box;
   display: -ms-flexbox;
+  /* display: flex;
+  flex-direction: column;
+  gap: var(--space-md); */
+  display: -ms-grid;
+  display: grid;
+  gap: var(--space-sm);
+}
+.expense-inputab{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  flex-direction: row;
   gap: var(--space-md);
 }
 
 @media screen and (max-width: 725px) {
   .expense-inputs {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  .expense-inputab {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
   }
@@ -643,14 +658,14 @@ table a {
 .footer{
   font-size: 15px;
   margin-top: 0.2rem;
-  padding: 0.1rem;
-  padding-left: 20rem;
+  padding: 0.2rem;
+  padding-left: 25rem;
   text-align: center;
-  background-color: rgb(159, 159, 159);
+  background-color: rgba(217, 217, 217, 0.633);
   position:relative;
   bottom: 0;
   left: 0;
   right: 0;
-  border-top: 2px solid;
+  border-top: 2px dotted;
   width: 100%;
 }

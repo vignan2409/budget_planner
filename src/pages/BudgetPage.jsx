@@ -75,7 +75,7 @@ const BudgetPage = () => {
       // }}
     >
       <h1 className="existbud">
-        <span className="accent">{budget.name}</span> Overview
+        <span className="accent">{budget.name}</span>
       </h1>
       <div className="flex-lg">
         <BudgetItem budget={budget} showDelete={true} />
