@@ -14,6 +14,7 @@ import {
 const ExpenseItem = ({ expense, showBudget }) => {
   const fetcher = useFetcher();
 
+  // fetche a budget that matches the budgetId of the expense.
   const budget = getAllMatchingItems({
     category: "budgets",
     key: "id",
@@ -22,19 +23,12 @@ const ExpenseItem = ({ expense, showBudget }) => {
 
   return (
     <>
-      <td>{expense.name}</td>
+      <td>{expense.name}</td> {/* <td> - table cells */}
       <td>{formatCurrency(expense.amount)}</td>
       <td>{formatDateToLocaleString(expense.createdAt)}</td>
       {showBudget && (
         <td>
-          <Link
-            to={`/budget/${budget.id}`}
-            // style={{
-            //   "--accent": budget.color,
-            // }}
-          >
-            {budget.name}
-          </Link>
+          <Link to={`/budget/${budget.id}`}>{budget.name}</Link>
         </td>
       )}
       <td>
