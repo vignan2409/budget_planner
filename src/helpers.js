@@ -105,3 +105,21 @@ export const updateBudget = (updatedBudget) => {
   );
   localStorage.setItem('budgets', JSON.stringify(updatedBudgets));
 };
+
+// Update an expense
+export const updateExpense = (expenseId, updatedExpense) => {
+  const expenses = fetchData("expenses") ?? [];
+  const updatedExpenses = expenses.map((expense) =>
+    expense.id === expenseId ? updatedExpense : expense
+  );
+  localStorage.setItem("expenses", JSON.stringify(updatedExpenses));
+};
+
+// delete expense
+export const deleteExpense = (expenseId) => {
+  const expenses = fetchData('expenses') || [];
+
+  const updatedExpenses = expenses.filter((expense) => expense.id !== expenseId);
+
+  localStorage.setItem('expenses', JSON.stringify(updatedExpenses));
+};
