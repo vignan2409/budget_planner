@@ -68,12 +68,7 @@ const BudgetPage = () => {
   const { budget, expenses } = useLoaderData();
 
   return (
-    <div
-      className="grid-lg"
-      // style={{
-      //   "--accent": budget.color,
-      // }}
-    >
+    <div className="grid-lg">
       <h1 className="existbud">
         <span className="accent">{budget.name}</span>
       </h1>

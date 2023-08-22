@@ -1,5 +1,6 @@
 export const waait = () =>
   new Promise((res) => setTimeout(res, Math.random() * 800));
+  // This function returns a Promise that resolves after a random delay between 0 and 800 ms
 
 // colors
 const generateRandomColor = () => {
@@ -8,11 +9,14 @@ const generateRandomColor = () => {
 };
 
 // Local storage
+// This function retrieves data from local storage based on the provided key. 
+// It parses the JSON data stored in the local storage and returns it.
 export const fetchData = (key) => {
   return JSON.parse(localStorage.getItem(key));
 };
 
 // Get all items from local storage
+// This function retrieves all items from local storage in the specified category that match a specific key-value pair. It filters the data array and returns items that have a matching value for the specified key.
 export const getAllMatchingItems = ({ category, key, value }) => {
   const data = fetchData(category) ?? [];
   return data.filter((item) => item[key] === value);
