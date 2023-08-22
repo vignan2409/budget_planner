@@ -90,9 +90,9 @@ const Dashboard = () => {
     <>
       {userName ? (
         <div className="dashboard">
-          <h1 className="personalized">
+          {/* <h1 className="personalized">
             Welcome, <span className="accentper">{userName}</span>
-          </h1>
+          </h1> */}
           <div className="grid-sm">
             {budgets && budgets.length > 0 ? (
               <div className="grid-lg">

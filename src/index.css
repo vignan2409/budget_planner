@@ -367,6 +367,12 @@ nav a {
   }
 }
 
+.Navud{
+  display: flex;
+  justify-items: auto;
+  gap: 1rem;
+}
+
 /* forms */
 label {
   font-size: var(--fs-300);
