@@ -1,5 +1,9 @@
+import { useState } from 'react';
+
 // rrd imports
-import { useLoaderData } from "react-router-dom";
+import { useParams , useLoaderData } from "react-router-dom";
+
+import { PencilIcon, CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/solid';
 
 // library
 import { toast } from "react-toastify";
@@ -10,7 +14,7 @@ import BudgetItem from "../components/BudgetItem";
 import Table from "../components/Table";
 
 // helpers
-import { createExpense, deleteItem, getAllMatchingItems } from "../helpers";
+import { createExpense, deleteItem, updateBudget, formatCurrency, getAllMatchingItems } from "../helpers";
 
 // loader
 export async function budgetLoader({ params }) {
@@ -65,12 +69,95 @@ export async function budgetAction({ request }) {
 }
 
 const BudgetPage = () => {
+  const { id } = useParams();
+  const [editing, setEditing] = useState(false);
+  const [editedBudget, setEditedBudget] = useState({});
   const { budget, expenses } = useLoaderData();
+
+  // Function to handle saving the edited budget
+  const handleSave = async () => {
+    try {
+      await updateBudget(id, editedBudget); // Update the budget in your helpers.js
+      toast.success('Budget updated successfully');
+      setEditing(false);
+      // Update the budget in the state
+      const updatedBudgets = budget.map(b => (b.id === id ? editedBudget : b));
+      setBudgets(updatedBudgets);
+    } catch (error) {
+      toast.error('Error updating budget');
+    }
+  };
+
+  const handleEditClick = () => {
+    setEditing(true);
+    setEditedBudget({ ...budget }); // Create a copy of the budget for editing
+  };
+
+  const handleEditCancel = () => {
+    setEditing(false);
+  };
+
+  const handleEditSubmit = () => {
+    try {
+      updateBudget(editedBudget); // Update the budget in local storage
+      setEditing(false);
+      toast.success('Budget updated successfully!');
+      toast.success('Please, Refresh the Page');
+    } catch (error) {
+      toast.error('Failed to update budget. Please try again.');
+    }
+  };
+
 
   return (
     <div className="grid-lg">
-      <h1 className="existbud">
+      {editing ? (
+        // Edit Form
+        <div className="form-wrapper edit-budget-form">
+          <h2 className="h3">Edit Budget: {budget.name}</h2>
+          <div className="grid-xs">
+            <label htmlFor="editBudgetName">Budget Name</label>
+            <input
+              type="text"
+              id="editBudgetName"
+              value={editedBudget.name}
+              onChange={(e) =>
+                setEditedBudget({ ...editedBudget, name: e.target.value })
+              }
+            />
+          </div>
+          <div className="grid-xs">
+            <label htmlFor="editBudgetAmount">Amount</label>
+            <input
+              type="number"
+              step="1"
+              id="editBudgetAmount"
+              value={editedBudget.amount}
+              onChange={(e) =>
+                setEditedBudget({ ...editedBudget, amount: +e.target.value })
+              }
+            />
+          </div>
+          <div className="edit-form-buttons">
+            <button onClick={handleEditSubmit} className="btn btn--dark">
+              Save <CheckCircleIcon width={20} />
+            </button>
+            <button onClick={handleEditCancel} className="btn btn--light">
+              Cancel <XCircleIcon width={20} />
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div className="budget-details"></div>
+      )}
+
+      <h1 className="existbud existflex">
         <span className="accent">{budget.name}</span>
+        <span>
+          <button onClick={handleEditClick} className="btn btn--dark">
+            Edit Budget <PencilIcon width={20} />
+          </button>
+        </span>
       </h1>
       <div className="flex-lg">
         <BudgetItem budget={budget} showDelete={true} />

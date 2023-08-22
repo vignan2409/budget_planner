@@ -96,3 +96,12 @@ export const formatCurrency = (amt) => {
     currency: "INR",
   });
 };
+
+// Update a budget in local storage
+export const updateBudget = (updatedBudget) => {
+  const existingBudgets = fetchData('budgets') ?? [];
+  const updatedBudgets = existingBudgets.map((budget) =>
+    budget.id === updatedBudget.id ? updatedBudget : budget
+  );
+  localStorage.setItem('budgets', JSON.stringify(updatedBudgets));
+};

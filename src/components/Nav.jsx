@@ -26,10 +26,12 @@ const Nav = ({ userName }) => {
           }}
         >
           <div className="Navud">
-            <a type="" className="btn btn--warning">
-              <UserIcon width={20} />
-              <span>{userName}</span>
-            </a>
+            <NavLink to="/">
+              <span>
+                <UserIcon width={20} />
+                <span>{userName}</span>
+              </span>
+            </NavLink>
             <button type="submit" className="btn btn--warning">
               <span>Delete Account</span>
               <TrashIcon width={20} />

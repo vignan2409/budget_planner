@@ -109,6 +109,12 @@ p {
 .existbud{
   font-size: 30px;
 }
+.existflex{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
 .dashboard .personalized{
   font-size: 45px;
   line-height: 60px;
@@ -674,4 +680,10 @@ table a {
   right: 0;
   border-top: 2px dotted;
   width: 100%;
+}
+
+.edit-form-buttons{
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.6rem;
 }
