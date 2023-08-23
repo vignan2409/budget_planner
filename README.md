@@ -27,7 +27,8 @@ The application provides an intuitive interface for creating and managing budget
 
 You can view a live demo of the application [here](https://agr-budget-buddy.netlify.com).
 
-![Demo GIF](demo.gif)
+![budget-buddy](https://github.com/agrSaket/Budget-Planner/assets/134057654/051a8e8f-a518-456c-8491-4c2202390167)
+
 
 ## Installation
    
