@@ -40,12 +40,12 @@ const Nav = ({ userName }) => {
         </Form>
       )}
       {!userName && (
-        <div className="auth-links">
-          <NavLink to="/login" className="btn btn--dark">
-            Login
-          </NavLink>
-          <NavLink to="/signup" className="btn btn--light">
+        <div className="auth-links" style={{ display: 'flex', gap: '1rem', marginLeft: 'auto' }}>
+          <NavLink to="/signup" className="btn btn--dark">
             Signup
+          </NavLink>
+          <NavLink to="/login" className="btn btn--light">
+            Login
           </NavLink>
         </div>
       )}
