@@ -41,10 +41,10 @@ const AddExpenseForm = ({ budgets }) => {
               type="text"
               name="newExpense"
               id="newExpense"
-              placeholder="e.g., Sofa"
+              placeholder=""
               ref={focusRef}
               required
-            />
+            />  
           </div>
           <div className="expense-inputab">
             <div className="grid-xs">
@@ -55,7 +55,7 @@ const AddExpenseForm = ({ budgets }) => {
                 inputMode="decimal"
                 name="newExpenseAmount"
                 id="newExpenseAmount"
-                placeholder="e.g., ₹9000"
+                placeholder=""
                 required
               />
             </div>

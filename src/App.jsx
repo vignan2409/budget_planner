@@ -11,7 +11,7 @@ import Main, { mainLoader } from "./layouts/Main";
 import { logoutAction } from "./actions/logout";
 import { deleteBudget } from "./actions/deleteBudget";
 
-// Routes
+// Route
 import Dashboard, { dashboardAction, dashboardLoader } from "./pages/Dashboard";
 import Error from "./pages/Error";
 import BudgetPage, { budgetAction, budgetLoader } from "./pages/BudgetPage";
@@ -21,6 +21,10 @@ import ExpensesPage, {
 } from "./pages/ExpensesPage";
 
 import Footer from "./pages/Footer";
+
+// ✅ Import Login and Signup pages
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +65,17 @@ const router = createBrowserRouter([
         action: logoutAction,
       },
     ],
+  },
+  // ✅ New login and signup routes (outside of Main layout)
+  {
+    path: "/login",
+    element: <Login />,
+    errorElement: <Error />,
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
+    errorElement: <Error />,
   },
 ]);
 

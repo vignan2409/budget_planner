@@ -1,17 +1,13 @@
 // rrd imports
-import { Link, useLoaderData } from "react-router-dom";
-
-// library imports
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-// components
 import Intro from "../components/Intro";
 import AddBudgetForm from "../components/AddBudgetForm";
 import AddExpenseForm from "../components/AddExpenseForm";
 import BudgetItem from "../components/BudgetItem";
 import Table from "../components/Table";
 
-//  helper functions
 import {
   createBudget,
   createExpense,
@@ -85,14 +81,12 @@ export async function dashboardAction({ request }) {
 
 const Dashboard = () => {
   const { userName, budgets, expenses } = useLoaderData();
+  const navigate = useNavigate();
 
   return (
     <>
       {userName ? (
         <div className="dashboard">
-          {/* <h1 className="personalized">
-            Welcome, <span className="accentper">{userName}</span>
-          </h1> */}
           <div className="grid-sm">
             {budgets && budgets.length > 0 ? (
               <div className="grid-lg">
@@ -130,9 +124,29 @@ const Dashboard = () => {
           </div>
         </div>
       ) : (
-        <Intro />
+        <div className="grid-sm">
+          <Intro />
+
+          {/* 👇 Add login/signup buttons here */}
+          <div style={{ marginTop: "1rem", textAlign: "center" }}>
+            <button
+              onClick={() => navigate("/login")}
+              className="auth-btn"
+            >
+              Login
+            </button>
+            <button
+              onClick={() => navigate("/signup")}
+              className="auth-btn"
+              style={{ marginLeft: "1rem" }}
+            >
+              Signup
+            </button>
+          </div>
+        </div>
       )}
     </>
   );
 };
+
 export default Dashboard;

@@ -13,7 +13,7 @@ const Nav = ({ userName }) => {
     <nav>
       <NavLink to="/" aria-label="Go to home">
         <img src={logomark} alt="" height={30} />
-        <span>Budget Buddy</span>
+        <span>Budget Planner</span>
       </NavLink>
       {userName && (
         <Form
@@ -38,6 +38,16 @@ const Nav = ({ userName }) => {
             </button>
           </div>
         </Form>
+      )}
+      {!userName && (
+        <div className="auth-links">
+          <NavLink to="/login" className="btn btn--dark">
+            Login
+          </NavLink>
+          <NavLink to="/signup" className="btn btn--light">
+            Signup
+          </NavLink>
+        </div>
       )}
     </nav>
   );

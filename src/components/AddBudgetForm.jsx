@@ -36,7 +36,7 @@ const AddBudgetForm = () => {
             type="text"
             name="newBudget"
             id="newBudget"
-            placeholder="e.g., Furnitures"
+            placeholder=""
             required
             ref={focusRef} // when the form is reset, then focus on the input element.
           />
@@ -48,7 +48,7 @@ const AddBudgetForm = () => {
             step="1"
             name="newBudgetAmount"
             id="newBudgetAmount"
-            placeholder="e.g., ₹400"
+            placeholder=""
             required
             inputMode="decimal"
           />

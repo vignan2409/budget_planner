@@ -1,5 +1,6 @@
 // rrd imports
 import { Outlet, useLoaderData } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 // assets
 // import wave from "../assets/wave.svg";
@@ -18,17 +19,22 @@ export function mainLoader() {
 }
 
 const Main = () => {
-  const { userName } = useLoaderData()   // used to access the data loaded by the mainLoader function
+  const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    const storedName = JSON.parse(localStorage.getItem("userName"));
+    if (storedName) {
+      setUserName(storedName);
+    }
+  }, []);
 
   return (
     <div className="layout">
       <Nav userName={userName} />
       <main>
-        {/* serves as a placeholder for nested routes. This allows the rendering of child 
-        components based on the route structure. */}
         <Outlet />
       </main>
     </div>
-  )
-}
+  );
+};
 export default Main

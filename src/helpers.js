@@ -22,7 +22,7 @@ export const getAllMatchingItems = ({ category, key, value }) => {
   return data.filter((item) => item[key] === value);
 };
 
-// delete item from local storage
+// delete item from local storag
 export const deleteItem = ({ key, id }) => {
   const existingData = fetchData(key);
   if (id) {
